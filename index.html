@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Javascript Quiz</title>
+        <link rel="stylesheet" href="./assets/css/stylesheet.css"/>
+    </head>
+    <body>
+        <div class = "wrapper">
+            <header>
+                <div class="high-score-storage">
+                    <h4>View high scores</h4>
+                </div>
+
+                <div class="timers">
+                    <h4>Time:</h4>
+                </div>
+            </header>
+
+            <div class="card-holder">
+                <section class="card" id="quiz-prompt">
+                    <h1> Coding Quiz Challenge</h1>
+                    <p>Try to answer the following code-related questions within the time limit. <br>
+                        Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+                    </p>
+                    <button id="quiz-start" class="btn">Start Quiz</button>
+                </section>
+
+                <section class="card" id="question-one">
+                    <div class="question">
+                        <p>
+                            Commonly used data types DO Not Include:
+                        </p>
+                    </div>
+
+                    <div class="answer">
+
+                        <ul>
+                            <li><button class="button1">1. strings</button></li>
+                            <li><button class="button2">2. booleans</button></li>
+                            <li><button class="button3">3. alerts</button></li>
+                            <li><button class="button4">4. numbers</button></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="card" id="question-two">
+
+                    <div class = "question">
+                        <p>
+                            The condition in an if/else statement is enclosed with ________.
+                        </p>
+                    </div>
+
+                    <div class="answer">
+                    
+                        <ul>
+                            <li><button class="button1">1. quotes</button></li>
+                            <li><button class="button2">2. curly brackets</button></li>
+                            <li><button class="button3">3. parenthesis</button></li>
+                            <li><button class="button4">4. square brackets</button></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="card"id="question-three">
+
+                    <div class="question">
+                        <p>
+                            Arrays in JavaScript can be used to store ________.
+                        </p>
+                    </div>
+
+                    <div class="answer">
+                    
+                        <ul>
+                            <li><button class="button1">1. numbers and strings</button></li>
+                            <li><button class="button2">2. other arrays</button></li>
+                            <li><button class="button3">3. booleans</button></li>
+                            <li><button class="button4">4. all of the above</button></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="card" id="question-four">
+
+                    <div class="question">
+                        <p>
+                            String values must be enclosed within _________ when being assigned to variables.
+                        </p>
+                    </div>
+
+                    <div class="answer">
+                        <ul>
+                            <li><button class="button1">1. commas</button></li>
+                            <li><button class="button2">2. curly brackets</button></li>
+                            <li><button class="button3">3. quotes</button></li>
+                            <li><button class="button4">4. parenthesis</button></li>
+                        </ul>    
+                    </div>
+
+                </section>
+
+                <section class="card" id="question-five">
+
+                    <div class="question">
+                        <p>
+                            A very usefull tool used during development and debugging for printing content to the debugger is:
+                        </p>
+                    </div>
+
+                    <div class="answer">
+                        
+                        <ul>
+                            <li><button class="button1">1. JavaScript</button></li>
+                            <li><button class="button2">2. terminal/bask</button></li>
+                            <li><button class="button3">3. for loops</button></li>
+                            <li><button class="button4">4. console.log</button></li>
+                        </ul>
+                        
+                    </div>
+                </section>
+
+                <section class="card" id="final-score-card">
+                    <h2>All done!</h2>
+                    <p>Your final score is </p>
+                    <button id="submit-score" class="btn">Submit</button>
+                </section>
+
+                <section class="card" id="score-submit">
+                    <h2>High scores</h2>
+
+                    <button id="go-back" class="btn">Go back</button>
+                    <button id="clear-score" class="btn">Clear high score</button>
+                </section>
+
+
+            </div>
+        </div>
+        <script src="./assets/js/script.js"></script>
+    </body>
+</html>

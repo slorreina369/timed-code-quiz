@@ -1,0 +1,64 @@
+:root{
+    --primary-color: #ffffff ;
+    --secondary-color: #c36eea;
+    --tertiary-color: #351c75;
+}
+header {
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--primary-color);
+    padding: 0 10px 0 10px;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.high-score-storage{
+    color: var(--secondary-color);
+}
+.timers{
+    color: black;
+}
+.card-holder{
+    margin: auto;
+    width: 40vw;
+    padding-top: 5vw;
+}
+#quiz-prompt h1{
+    font-size: 35px;
+}
+#quiz-prompt p, #final-score-card p{
+    font-size: 22px
+}
+.card{
+    padding: 26px ;
+}
+#quiz-prompt, #final-score-card, #score-submit{
+    text-align: center;
+}
+.question{
+    font-size: 33px;
+    font-weight: bolder;
+}
+.answer{
+    font-size: small;
+}
+.answer ul{
+    list-style-type: none;
+}
+.button1, .button2, .button3, .button4, .btn{
+    color: var(--primary-color);
+    background-color: var(--tertiary-color);
+    font-size: 1.50vw;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border:none
+}
+.button1, .button2, .button3, .button4{
+    width: 20vw;
+    text-align: left;
+}
+.button1:hover, .button2:hover, .button3:hover, .button4:hover, .btn:hover{
+    background-color: var(--secondary-color);
+}
