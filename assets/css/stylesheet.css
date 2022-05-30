@@ -19,7 +19,7 @@ body {
 .timers{
     color: black;
 }
-.card-holder{
+.card-holder, .answer-holder{
     margin: auto;
     width: 40vw;
     padding-top: 5vw;
@@ -61,4 +61,12 @@ body {
 }
 .answer-btn:hover{
     background-color: var(--secondary-color);
+}
+.answer-holder{
+    border-top: solid 3px;
+    color: gray;
+    margin: auto;
+    font-size: 3vw;
+    padding-top: 1vw;
+
 }
