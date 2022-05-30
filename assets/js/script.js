@@ -8,7 +8,7 @@ var btnArray = document.querySelectorAll(".btn, .answer-btn");
 var answerBtns = document.querySelectorAll(".answer-btn");
 var answerHolder = document.querySelector(".answer-holder");
 var countdown = document.querySelector("#countdown");
-var score = 5;
+var score = 60;
 var startBtn = document.querySelector("#quiz-start");
 
 var showNextCard = function(event){
@@ -52,6 +52,8 @@ var correctAnswer = function(event){
     if(!seekAnswer){
         console.log("wrong");
         answerHolder.innerText = "Wrong!";
+        score = score - 5;
+
     } else {
         console.log("correct");
         answerHolder.innerText = "Correct!";
