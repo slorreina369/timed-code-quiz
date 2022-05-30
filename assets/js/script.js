@@ -1,5 +1,3 @@
-// TODO: display one card at a time
-// TODO: display one card after the other, after the user answers the question
 // TODO: determine if an answer is right or wrong
 // TODO: display if answer is right or wrong
 // TODO: Set up timer, make timer count down - connect timer to "start" button
@@ -10,6 +8,7 @@
 
 var cardElements = document.querySelectorAll(".card");
 var btnArray = document.querySelectorAll(".btn, .answer-btn");
+var answerBtns = document.querySelectorAll(".answer-btn");
 
 var showNextCard = function(event){
     // find where we are
@@ -22,14 +21,21 @@ var showNextCard = function(event){
     };
     nextCard.hidden = false;
     console.log(nextCard);
-    
-    
 };
+var correctAnswer = function(event){
+    // pull a question and an answer
+    var seekAnswer = event.target.dataset.correct
+    // compare questions and answers
 
-// get start button
-// add click event listener to start button (show next card)
-// get answer buttons
-// add click event listener to each answer button (show next card)
+    // if/else what happens next
+    if(!seekAnswer){
+        console.log("wrong");
+    }
+}
+
 btnArray.forEach(function(elem){
     elem.addEventListener("click", showNextCard)
+});
+answerBtns.forEach(function(elem){
+ elem.addEventListener("click", correctAnswer);
 });
