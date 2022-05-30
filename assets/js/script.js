@@ -1,4 +1,3 @@
-// TODO: Set up timer, make timer count down - connect timer to "start" button
 // TODO: If answer is wrong subtract time from the timer
 // TODO: If all questions are answered, display remaining time as the user's score
 // TODO: Display user's score 
@@ -9,7 +8,8 @@ var btnArray = document.querySelectorAll(".btn, .answer-btn");
 var answerBtns = document.querySelectorAll(".answer-btn");
 var answerHolder = document.querySelector(".answer-holder");
 var countdown = document.querySelector("#countdown");
-var score = 75;
+var score = 5;
+var startBtn = document.querySelector("#quiz-start");
 
 var showNextCard = function(event){
     // find where we are
@@ -24,9 +24,20 @@ var showNextCard = function(event){
     console.log(nextCard);
 };
 var timedQuiz = function(event){
+    var finalScoreCard = document.querySelector("#final-score-card");
     var countdownID = setInterval(function(){
         score -= 1;
         countdown.innerText = score;
+        if(score <= 0){
+            var endQuiz = document.querySelector(".card:not([hidden])")
+            clearInterval(countdownID);
+            console.log("womp womp");
+            finalScoreCard.hidden = false;
+            endQuiz.hidden = true;
+            
+        }
+        
+    
     }, 1000);
 
     //time starts connected to start button
@@ -57,4 +68,4 @@ btnArray.forEach(function(elem){
 answerBtns.forEach(function(elem){
  elem.addEventListener("click", correctAnswer);
 });
-timedQuiz();
+startBtn.addEventListener("click", timedQuiz);
