@@ -1,8 +1,6 @@
-// TODO: If answer is wrong subtract time from the timer
 // TODO: If all questions are answered, display remaining time as the user's score
 // TODO: Display user's score 
 // TODO: Present prompt to save current score, request user initials
-
 var cardElements = document.querySelectorAll(".card");
 var btnArray = document.querySelectorAll(".btn, .answer-btn");
 var answerBtns = document.querySelectorAll(".answer-btn");
@@ -10,6 +8,9 @@ var answerHolder = document.querySelector(".answer-holder");
 var countdown = document.querySelector("#countdown");
 var score = 60;
 var startBtn = document.querySelector("#quiz-start");
+var countdownID;
+var finalScoreCard = document.querySelector("#final-score-card");
+var finalScore = document.querySelector("#final-score");
 
 var showNextCard = function(event){
     // find where we are
@@ -22,27 +23,32 @@ var showNextCard = function(event){
     };
     nextCard.hidden = false;
     console.log(nextCard);
+    if(nextCard === finalScoreCard && score >= 0){
+        console.log("boo you whore!");
+        clearInterval(countdownID);
+        finalScore.innerText = score;
+    }
 };
-var timedQuiz = function(event){
-    var finalScoreCard = document.querySelector("#final-score-card");
-    var countdownID = setInterval(function(){
+
+//it is called a timed quiz for a reason
+var startTimer = function(event){
+    countdownID = setInterval(function(){
         score -= 1;
         countdown.innerText = score;
         if(score <= 0){
             var endQuiz = document.querySelector(".card:not([hidden])")
             clearInterval(countdownID);
-            console.log("womp womp");
             finalScoreCard.hidden = false;
             endQuiz.hidden = true;
-            
-        }
+        };
         
     
     }, 1000);
 
     //time starts connected to start button
     // display time
-}
+};
+
 var correctAnswer = function(event){
     // pull an answer
     var seekAnswer = event.target.dataset.correct
@@ -70,4 +76,4 @@ btnArray.forEach(function(elem){
 answerBtns.forEach(function(elem){
  elem.addEventListener("click", correctAnswer);
 });
-startBtn.addEventListener("click", timedQuiz);
+startBtn.addEventListener("click", startTimer);
