@@ -12,6 +12,9 @@ var countdownID;
 var finalScoreCard = document.querySelector("#final-score-card");
 var finalScore = document.querySelector("#final-score");
 
+var saveScore = function(){
+    localStorage.setItem("score", JSON.stringify(score));
+};
 var showNextCard = function(event){
     // find where we are
     var currentCard = event.target.closest(".card");
@@ -24,9 +27,10 @@ var showNextCard = function(event){
     nextCard.hidden = false;
     console.log(nextCard);
     if(nextCard === finalScoreCard && score >= 0){
-        console.log("boo you whore!");
+       
         clearInterval(countdownID);
         finalScore.innerText = score;
+        saveScore();
     }
 };
 
