@@ -72,3 +72,10 @@ body {
     color: var(--secondary-color);
     background-color: var(--primary-color);
 }
+#high-score-list li{
+    list-style: none;
+    background-color: #d9d3e9;
+    text-align: left;
+    margin: 10px;
+    padding: 14px;  
+}

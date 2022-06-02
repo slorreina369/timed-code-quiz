@@ -14,6 +14,7 @@ var submitbtn = document.querySelector("#submit-score");
 var initialSaved = document.querySelector("#initials");
 var scoreSubmit = document.querySelector("#score-submit");
 var viewScore = document.querySelector("#view-score");
+var highScoreList = document.querySelector("#high-score-list");
 var highScores = [];
 var createScoreEl = function(){};
 
@@ -24,6 +25,7 @@ var saveScore = function(){
     };
 
     highScores.push(highscore);
+    displayHighScore(highscore, highScores.length + 1);
 
     localStorage.setItem("highscore", JSON.stringify(highScores));
 };
@@ -37,10 +39,17 @@ var loadScore = function(){
     };
     highScores = JSON.parse(highScores);
     for(i=0; i < highScores.length; i++){
-        createScoreEl(highScores[i]);
+        displayHighScore(highScores[i], i + 1);
     };
 
 
+};
+
+var displayHighScore = function(highscore, index){
+    var listItemEl = document.createElement("li");
+    listItemEl.innerText = index + ". " + highscore.initials + " - " + highscore.score;
+    highScoreList.appendChild(listItemEl);
+    
 };
 
 var getCurrentCard = function(){
@@ -130,3 +139,4 @@ answerBtns.forEach(function(elem){
 startBtn.addEventListener("click", startTimer);
 submitbtn.addEventListener("click", saveScore);
 viewScore.addEventListener("click", viewScoreHistory);
+loadScore();
