@@ -13,7 +13,7 @@ A javascript quiz that is timed and saves the scores
 
 ## Website
 
-[Live Website](https://slorreina369.github.io/record-player-and-a-generator/)
+[Live Website](https://slorreina369.github.io/timed-code-quiz/)
 
 ## Screenshots 
 
