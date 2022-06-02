@@ -13,9 +13,7 @@ header {
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
-.high-score-storage{
-    color: var(--secondary-color);
-}
+
 .timers{
     color: black;
 }
@@ -69,4 +67,8 @@ body {
     font-size: 3vw;
     padding-top: 1vw;
 
+}
+#view-score{
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
 }

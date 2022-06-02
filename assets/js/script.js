@@ -1,8 +1,7 @@
-// TODO: If all questions are answered, display remaining time as the user's score
-// TODO: Display user's score 
 // TODO: Present prompt to save current score, request user initials
+
 var cardElements = document.querySelectorAll(".card");
-var btnArray = document.querySelectorAll(".btn, .answer-btn");
+var btnArray = document.querySelectorAll("#quiz-start, #submit-score, .answer-btn, #go-back");
 var answerBtns = document.querySelectorAll(".answer-btn");
 var answerHolder = document.querySelector(".answer-holder");
 var countdown = document.querySelector("#countdown");
@@ -11,13 +10,48 @@ var startBtn = document.querySelector("#quiz-start");
 var countdownID;
 var finalScoreCard = document.querySelector("#final-score-card");
 var finalScore = document.querySelector("#final-score");
+var submitbtn = document.querySelector("#submit-score");
+var initialSaved = document.querySelector("#initials");
+var scoreSubmit = document.querySelector("#score-submit");
+var viewScore = document.querySelector("#view-score");
+var highScores = [];
+var createScoreEl = function(){};
 
 var saveScore = function(){
-    localStorage.setItem("score", JSON.stringify(score));
+    var highscore = {
+        "initials": initialSaved.value,
+        "score":score
+    };
+
+    highScores.push(highscore);
+
+    localStorage.setItem("highscore", JSON.stringify(highScores));
 };
+
+var loadScore = function(){
+    highScores = localStorage.getItem("highscore");
+
+    if(!highScores){
+        highScores = [];
+        return false;
+    };
+    highScores = JSON.parse(highScores);
+    for(i=0; i < highScores.length; i++){
+        createScoreEl(highScores[i]);
+    };
+
+
+};
+
+var getCurrentCard = function(){
+
+     return document.querySelector(".card:not([hidden])")
+};
+
 var showNextCard = function(event){
     // find where we are
-    var currentCard = event.target.closest(".card");
+    console.log(event.target)
+    var currentCard = getCurrentCard();
     currentCard.hidden = true;
     // get next card
     var nextCard = currentCard.nextElementSibling;
@@ -27,23 +61,23 @@ var showNextCard = function(event){
     nextCard.hidden = false;
     console.log(nextCard);
     if(nextCard === finalScoreCard && score >= 0){
-       
         clearInterval(countdownID);
         finalScore.innerText = score;
-        saveScore();
     }
+
 };
 
 //it is called a timed quiz for a reason
 var startTimer = function(event){
+    score = 60;
     countdownID = setInterval(function(){
         score -= 1;
         countdown.innerText = score;
         if(score <= 0){
-            var endQuiz = document.querySelector(".card:not([hidden])")
+            var currentCard = getCurrentCard();
             clearInterval(countdownID);
             finalScoreCard.hidden = false;
-            endQuiz.hidden = true;
+            currentCard.hidden = true;
         };
         
     
@@ -51,6 +85,18 @@ var startTimer = function(event){
 
     //time starts connected to start button
     // display time
+};
+
+var viewScoreHistory = function(event){
+    var currentCard = getCurrentCard();
+    console.log("yike")
+    scoreSubmit.hidden = false
+    currentCard.hidden = true
+    if(score >= 0){
+        clearInterval(countdownID);
+        score = "";
+        
+    }
 };
 
 var correctAnswer = function(event){
@@ -77,7 +123,10 @@ var correctAnswer = function(event){
 btnArray.forEach(function(elem){
     elem.addEventListener("click", showNextCard)
 });
+
 answerBtns.forEach(function(elem){
  elem.addEventListener("click", correctAnswer);
 });
 startBtn.addEventListener("click", startTimer);
+submitbtn.addEventListener("click", saveScore);
+viewScore.addEventListener("click", viewScoreHistory);
